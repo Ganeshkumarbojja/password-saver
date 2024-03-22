@@ -1,36 +1,37 @@
-import {Component} from 'react'
+import { Component } from "react";
+import { RiLockPasswordFill } from "react-icons/ri";
 
-import CreatePassword from '../CreatePassword'
+import CreatePassword from "../CreatePassword";
 
-import PasswordContainer from '../PasswordContainer'
+import PasswordContainer from "../PasswordContainer";
 
-import './index.css'
+import "./index.css";
 
 class PasswordManager extends Component {
-  state = {passwordsList: []}
+  state = { passwordsList: [] };
 
-  addPassword = password => {
-    this.setState(prevState => ({
+  addPassword = (password) => {
+    this.setState((prevState) => ({
       passwordsList: [...prevState.passwordsList, password],
-    }))
-  }
+    }));
+  };
 
-  deletePassword = id => {
-    this.setState(prevState => ({
-      passwordsList: prevState.passwordsList.filter(item => item.id !== id),
-    }))
-  }
+  deletePassword = (id) => {
+    this.setState((prevState) => ({
+      passwordsList: prevState.passwordsList.filter((item) => item.id !== id),
+    }));
+  };
 
   render() {
-    const {passwordsList} = this.state
+    const { passwordsList } = this.state;
     return (
       <div className="app-container">
         <div className="app-responsive-container">
-          <img
-            src="https://assets.ccbp.in/frontend/react-js/password-manager-logo-img.png"
-            className="app-logo"
-            alt="app logo"
-          />
+          <div className="title-container">
+            <RiLockPasswordFill size={35} color="#ffffff" />
+            <p className="app-title">Password Saver</p>
+          </div>
+
           <CreatePassword addPassword={this.addPassword} />
           <PasswordContainer
             passwordsList={passwordsList}
@@ -38,8 +39,8 @@ class PasswordManager extends Component {
           />
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default PasswordManager
+export default PasswordManager;

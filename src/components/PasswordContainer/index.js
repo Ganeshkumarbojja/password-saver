@@ -1,23 +1,23 @@
-import {Component} from 'react'
+import { Component } from "react";
 
-import PasswordItem from '../PasswordItem'
+import PasswordItem from "../PasswordItem";
 
-import './index.css'
+import "./index.css";
 
 class PasswordContainer extends Component {
-  state = {checked: false, searchInput: ''}
+  state = { checked: false, searchInput: "" };
 
-  changeChecked = e => {
-    this.setState({checked: e.target.checked})
-  }
+  changeChecked = (e) => {
+    this.setState({ checked: e.target.checked });
+  };
 
-  changeSearchInput = e => {
-    this.setState({searchInput: e.target.value})
-  }
+  changeSearchInput = (e) => {
+    this.setState({ searchInput: e.target.value });
+  };
 
   renderHeader = () => {
-    const {passwordsList} = this.props
-    const count = passwordsList.length
+    const { passwordsList } = this.props;
+    const count = passwordsList.length;
     return (
       <div className="password-container-header">
         <div className="head-count">
@@ -40,25 +40,25 @@ class PasswordContainer extends Component {
           />
         </div>
       </div>
-    )
-  }
+    );
+  };
 
   getFilteredPasswords = () => {
-    const {passwordsList} = this.props
-    const {searchInput} = this.state
-    const passwordsFiltered = passwordsList.filter(item =>
-      item.website.toLowerCase().includes(searchInput.toLowerCase()),
-    )
-    return passwordsFiltered
-  }
+    const { passwordsList } = this.props;
+    const { searchInput } = this.state;
+    const passwordsFiltered = passwordsList.filter((item) =>
+      item.website.toLowerCase().includes(searchInput.toLowerCase())
+    );
+    return passwordsFiltered;
+  };
 
   renderPasswords = () => {
-    const {deletePassword} = this.props
-    const {checked} = this.state
-    const passwordsFiltered = this.getFilteredPasswords()
+    const { deletePassword } = this.props;
+    const { checked } = this.state;
+    const passwordsFiltered = this.getFilteredPasswords();
     return (
       <ul className="passwords-list">
-        {passwordsFiltered.map(item => (
+        {passwordsFiltered.map((item) => (
           <PasswordItem
             key={item.id}
             passwordDetails={item}
@@ -67,22 +67,22 @@ class PasswordContainer extends Component {
           />
         ))}
       </ul>
-    )
-  }
+    );
+  };
 
   renderNoPasswordsView = () => (
     <div className="no-passwords-container">
       <img
-        src="https://assets.ccbp.in/frontend/react-js/no-passwords-img.png"
+        src="https://stories.freepiklabs.com/api/vectors/forgot-password/amico/render?color=1186F0FF&background=false&hide="
         alt="no passwords"
         className="no-passwords-image"
       />
       <p className="no-passwords-text">No Passwords</p>
     </div>
-  )
+  );
 
   render() {
-    const passwordsFiltered = this.getFilteredPasswords()
+    const passwordsFiltered = this.getFilteredPasswords();
     return (
       <div className="passwords-container">
         {this.renderHeader()}
@@ -102,8 +102,8 @@ class PasswordContainer extends Component {
           ? this.renderNoPasswordsView()
           : this.renderPasswords()}
       </div>
-    )
+    );
   }
 }
 
-export default PasswordContainer
+export default PasswordContainer;

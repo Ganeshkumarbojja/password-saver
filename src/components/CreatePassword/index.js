@@ -1,53 +1,53 @@
-import {Component} from 'react'
+import { Component } from "react";
 
-import {v4} from 'uuid'
+import { v4 } from "uuid";
 
-import './index.css'
+import "./index.css";
 
-const colors = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+const colors = ["a", "b", "c", "d", "e", "f", "g", "h"];
 
 class CreatePassword extends Component {
-  state = {username: '', website: '', password: ''}
+  state = { username: "", website: "", password: "" };
 
-  onSubmit = e => {
-    e.preventDefault()
-    const {addPassword} = this.props
-    const {website, username, password} = this.state
-    const random = Math.ceil(Math.random() * colors.length)
-    const color = colors[random]
-    if (website === '') {
-      alert('Enter Website')
-      return
+  onSubmit = (e) => {
+    e.preventDefault();
+    const { addPassword } = this.props;
+    const { website, username, password } = this.state;
+    const random = Math.ceil(Math.random() * colors.length);
+    const color = colors[random];
+    if (website === "") {
+      alert("Enter Website");
+      return;
     }
 
-    if (username === '') {
-      alert('Enter Username')
-      return
+    if (username === "") {
+      alert("Enter Username");
+      return;
     }
 
-    if (password === '') {
-      alert('Enter Password')
-      return
+    if (password === "") {
+      alert("Enter Password");
+      return;
     }
-    const newPassword = {id: v4(), website, username, password, color}
-    addPassword(newPassword)
-    this.setState({username: '', website: '', password: ''})
-  }
+    const newPassword = { id: v4(), website, username, password, color };
+    addPassword(newPassword);
+    this.setState({ username: "", website: "", password: "" });
+  };
 
-  onChangeUsername = e => {
-    this.setState({username: e.target.value})
-  }
+  onChangeUsername = (e) => {
+    this.setState({ username: e.target.value });
+  };
 
-  onChangeWebsite = e => {
-    this.setState({website: e.target.value})
-  }
+  onChangeWebsite = (e) => {
+    this.setState({ website: e.target.value });
+  };
 
-  onChangePassword = e => {
-    this.setState({password: e.target.value})
-  }
+  onChangePassword = (e) => {
+    this.setState({ password: e.target.value });
+  };
 
   renderWebsiteInput = () => {
-    const {website} = this.state
+    const { website } = this.state;
     return (
       <div className="input-container">
         <div className="logo-container">
@@ -65,11 +65,11 @@ class CreatePassword extends Component {
           onChange={this.onChangeWebsite}
         />
       </div>
-    )
-  }
+    );
+  };
 
   renderUsernameInput = () => {
-    const {username} = this.state
+    const { username } = this.state;
     return (
       <div className="input-container">
         <div className="logo-container">
@@ -87,11 +87,11 @@ class CreatePassword extends Component {
           onChange={this.onChangeUsername}
         />
       </div>
-    )
-  }
+    );
+  };
 
   renderPasswordInput = () => {
-    const {password} = this.state
+    const { password } = this.state;
     return (
       <div className="input-container">
         <div className="logo-container">
@@ -109,8 +109,8 @@ class CreatePassword extends Component {
           onChange={this.onChangePassword}
         />
       </div>
-    )
-  }
+    );
+  };
 
   render() {
     return (
@@ -125,13 +125,13 @@ class CreatePassword extends Component {
           </button>
         </form>
         <img
-          src="https://assets.ccbp.in/frontend/react-js/password-manager-sm-img.png"
+          src="https://stories.freepiklabs.com/api/vectors/key/rafiki/render?color=&background=complete&hide="
           className="create-password-image"
           alt="password manager"
         />
       </div>
-    )
+    );
   }
 }
 
-export default CreatePassword
+export default CreatePassword;
