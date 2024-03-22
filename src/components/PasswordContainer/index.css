@@ -141,3 +141,9 @@ hr {
   font-size: 30px;
   font-weight: 500;
 }
+
+@media screen and (max-width: 767px) {
+  .no-passwords-text {
+    font-size: 25px;
+  }
+}
